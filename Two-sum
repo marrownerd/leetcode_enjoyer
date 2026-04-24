@@ -1,0 +1,11 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        maps = {}
+        for i, num in enumerate(nums):
+            diverse = target - num
+            if diverse in maps:
+                return [maps[diverse], i]
+            maps[num] = i
+
+    
+        
