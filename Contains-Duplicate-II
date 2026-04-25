@@ -1,0 +1,10 @@
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        uniq = set()
+        for i, num in enumerate(nums):
+            if i > k:
+                uniq.remove(nums[i-k-1])
+            if num in uniq:
+                return True
+            uniq.add(num)
+        return False
