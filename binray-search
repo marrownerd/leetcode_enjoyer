@@ -1,14 +1,13 @@
 class Solution(object):
     def search(self, nums, target):
-        n = len(nums)
-        i = n//2
-        m = 0
-        numb = -1
-        while 0 <= i <= n-1: 
-            if nums[i] < target:
-                i -= i//2
-            elif nums[i] == target:
-                numb = i
+        right = len(nums)-1
+        left = 0        
+        while left <= right:
+            mid = (left + right)//2
+            if nums[mid] < target:
+                left = mid +1
+            elif nums[mid] == target:
+                return mid
             else:
-                i += i//2
-        return numb
+                right = mid - 1
+        return -1
