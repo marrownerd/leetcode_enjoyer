@@ -1,0 +1,16 @@
+import numpy as np
+
+class Solution(object):
+    def coinChange(self, coins, amount):
+        if amount == 0:
+            return 0
+
+        am = [np.inf]*(amount+1)
+        am[0] = 0
+
+        for i in range(amount + 1):
+            for coin in coins:
+                if coin <= i:
+                    am[i] = min(am[i], am[i-coin]+1)
+
+        return am[amount] if am[amount]!=np.inf else -1
